@@ -33,7 +33,7 @@ editingSites_summary[is.na(editingSites_summary)]<-0
 # 将NA值转化为0
 ```
 
-		![chr1.editorSites.png](images/chr1.editorSites.png)
+![chr1.editorSites.png](images/chr1.editorSites.png)
 
 ```R
 plot_editingSites<-chr1.editingSites%>%select(SEGMENT,Edited_Reads)%>%group_by(SEGMENT)%>%summarise(number=sum(Edited_Reads))%>%ungroup()
@@ -45,7 +45,7 @@ theme(axis.text.x=element_text(colour="black",family="Times",size=14),axis.text.
 theme(legend.title = element_text(size = 20),legend.text = element_text(size = 15),axis.title.x = element_text(size=20),axis.title.y = element_text(size=20),axis.text.x = element_text(size = 14,color="black"),axis.text.y = element_text(size = 14,color="black"))
 ```
 
-		![条形图.png](images/条形图.png)
+![条形图.png](images/条形图.png)
 
 ## 6.2 APA(Alternative Polyadenylation)Detection
 
