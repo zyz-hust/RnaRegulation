@@ -45,7 +45,7 @@ theme(axis.text.x=element_text(colour="black",family="Times",size=14),axis.text.
 theme(legend.title = element_text(size = 20),legend.text = element_text(size = 15),axis.title.x = element_text(size=20),axis.title.y = element_text(size=20),axis.text.x = element_text(size = 14,color="black"),axis.text.y = element_text(size = 14,color="black"))
 ```
 
-<div align=center><img src="images/条形图.png" ></div>
+<div align=center><img src="images/条形图.png" width="1000"></div>
 
 ## 6.2 APA(Alternative Polyadenylation)Detection
 
