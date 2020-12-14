@@ -10,7 +10,7 @@
 > * INFO 为variant 的详细信息
 * chr1.editingSites.gvf ：Gene Variation File 对==每个==编辑位点的更信息的信息注释，包括geneID、name、segment等
 
-![png](../RnaRegulation/blob/gh-pages/images/chr1.editingSites.gvf.png)
+![png](https://github.com/zyz-hust/RnaRegulation/blob/gh-pages/images/chr1.editingSites.gvf.png)
 	
 **例如第一行，代表着，这个Variation 位于染色体1上的GeneID=ENSG00000225159，Name=NPM1P39，SEGMEMT=noncoding-exon,这段基因位于染色体的27206930-27207796，该Variation位于27206932，参考基因组上其为A，而Alter为G，其质量分数为66.28，共有7条reads，其中有6条发生了edited**
 2. 根据chr1.editingSites.gvf文件，统计RNA编辑位点在基因组上的分布
