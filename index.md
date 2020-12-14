@@ -77,8 +77,8 @@ awk -F'\t' 'NR!=1{if($16=="Y") print $0}' DaPars_Test_data_All_Prediction_Result
 
 两者筛选出来APA_diff一致
 3.  思考
-**我自己理解的是A,B两个样本之间通过PDUI的差值，来说明这个基因上的不同PolyA位点之间的距离差距。通过FDR、PDUI、Fold_change来判断这样距离的差距是否是明显的。假如A,B两个样本的PDUI值非常相近，则可能是同一个PolyA位点，而非diff-APA。**
-**因此我觉得，假如软件中对A,B没有control和test之间的区别的话，应该以PDUI_Group_diff的绝对值>=某个值作为筛选的标准，因为无论是A>B,B>A应该是以A,B之间的距离来判断两个PolyA之间的距离**
+> **我自己理解的是A,B两个样本之间通过PDUI的差值，来说明这个基因上的不同PolyA位点之间的距离差距。通过FDR、PDUI、Fold_change来判断这样距离的差距是否是明显的。假如A,B两个样本的PDUI值非常相近，则可能是同一个PolyA位点，而非diff-APA。**
+> **因此我觉得，假如软件中对A,B没有control和test之间的区别的话，应该以PDUI_Group_diff的绝对值>=某个值作为筛选的标准，因为无论是A>B,B>A应该是以A,B之间的距离来判断两个PolyA之间的距离**
 
 
 ## 6.3 Ribo-seq
@@ -145,20 +145,20 @@ export PATH=“/home/zhaoyizi/shapemapper-2.1.5:$PATH”
 **GATK用于检测变异(SNA/INDEL)的软件。**
 
 ### 6.6.b) workflow
-1）Alignment：使用STAR将RNA测序数据fastq文件比对到参考基因组上
-2）MarkDuplicates：使用GATK对重复序列进行标记，使后续变异检测软件可以识别这些重复序列。如果变异位点位于重复序列之中，可能会导致变异频率偏高
-3）SplitCigarReads：RNA出的reads可能会跨越不同的exon，在CIGAR表达式中会出现N值，使用GATK中的SplitCigarReads模块，将reads切分为k+1个reads。(k为CIGAR中的N的数量)。
-4）HaplotypeCaller：使用GATK进行变异检测。得到VCF variant call format(存储变异位点的标准格式)描述SNP，INDEL，SV结果的文本文件。
-5） VariantFilter：更具变异的聚集度(--windows\--cluster 3)、变异的链偏好性(--filter-name 'FS'\--filter 'FS > 30.0')、变异的平均质量水平(--filter-name 'QD')、位点测序深度(--filter-name'DP')等指标进行过滤
-6）Annotation：对得到的变异进行注释：变异位置；在人群中的频率、临床意义等等。可以使用ANNOVAR注释的公共数据库。程序现将文件从VCF格式转换为avinput格式，再对。avinput格式保存的变异进行注释。将注释之后的以.txt\.vcf两种形式保存。
+1. Alignment：使用STAR将RNA测序数据fastq文件比对到参考基因组上
+2. MarkDuplicates：使用GATK对重复序列进行标记，使后续变异检测软件可以识别这些重复序列。如果变异位点位于重复序列之中，可能会导致变异频率偏高
+3. SplitCigarReads：RNA出的reads可能会跨越不同的exon，在CIGAR表达式中会出现N值，使用GATK中的SplitCigarReads模块，将reads切分为k+1个reads。(k为CIGAR中的N的数量)。
+4. HaplotypeCaller：使用GATK进行变异检测。得到VCF variant call format(存储变异位点的标准格式)描述SNP，INDEL，SV结果的文本文件。
+5. VariantFilter：更具变异的聚集度(--windows\--cluster 3)、变异的链偏好性(--filter-name 'FS'\--filter 'FS > 30.0')、变异的平均质量水平(--filter-name 'QD')、位点测序深度(--filter-name'DP')等指标进行过滤
+6. Annotation：对得到的变异进行注释：变异位置；在人群中的频率、临床意义等等。可以使用ANNOVAR注释的公共数据库。程序现将文件从VCF格式转换为avinput格式，再对。avinput格式保存的变异进行注释。将注释之后的以.txt\.vcf两种形式保存。
 
 ### 6.6.c) output
 ![[snv_output.png]]
 
-1）每一行即一个变异位点的基本信息及在注释的公共数据库中的注释信息
-2）前五列为SNV变异位点的基本信息包括chr、start、end、ref、alt。
-3）后续若干列为在annotation中选用的注释公共数据库中的注释信息。如在ensGene注释数据库中，该变异位点的名称、功能、所位于的基因名称等等。
-4）otherinfo中包含了该变异位点更详细的信息。
+1. 每一行即一个变异位点的基本信息及在注释的公共数据库中的注释信息
+2. 前五列为SNV变异位点的基本信息包括chr、start、end、ref、alt。
+3. 后续若干列为在annotation中选用的注释公共数据库中的注释信息。如在ensGene注释数据库中，该变异位点的名称、功能、所位于的基因名称等等。
+4. otherinfo中包含了该变异位点更详细的信息。
 
 
 
