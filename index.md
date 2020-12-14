@@ -33,7 +33,7 @@ editingSites_summary[is.na(editingSites_summary)]<-0
 # 将NA值转化为0
 ```
 
-![chr1.editorSites.png](images/chr1.editorSites.png)
+<div align=center><img src="images/chr1.editorSites.png" ></div>
 
 ```R
 plot_editingSites<-chr1.editingSites%>%select(SEGMENT,Edited_Reads)%>%group_by(SEGMENT)%>%summarise(number=sum(Edited_Reads))%>%ungroup()
