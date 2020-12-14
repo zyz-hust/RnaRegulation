@@ -14,7 +14,7 @@
 
 ![png](images/chr1.editingSites.gvf.png)
 	
-&emsp;&emsp;**例如第一行，代表着，这个Variation 位于染色体1上的GeneID=ENSG00000225159，Name=NPM1P39，SEGMEMT=noncoding-exon,这段基因位于染色体的27206930-27207796，该Variation位于27206932，参考基因组上其为A，而Alter为G，其质量分数为66.28，共有7条reads，其中有6条发生了edited**
+&emsp;&emsp;**例如第一行代表着，这个Variation 位于染色体1上的GeneID=ENSG00000225159，Name=NPM1P39，SEGMEMT=noncoding-exon,这段基因位于染色体的27206930-27207796，该Variation位于27206932，参考基因组上其为A，而Alter为G，其质量分数为66.28，共有7条reads，其中有6条发生了edited**
 	
 2. 根据chr1.editingSites.gvf文件，统计RNA编辑位点在基因组上的分布
 
@@ -33,7 +33,7 @@ editingSites_summary[is.na(editingSites_summary)]<-0
 # 将NA值转化为0
 ```
 
-<div align=center><img src="images/chr1.editorSites.png" ></div>
+<div align=center><img src="images/chr1.editorSites.png" width="1000"</div>
 
 ```R
 plot_editingSites<-chr1.editingSites%>%select(SEGMENT,Edited_Reads)%>%group_by(SEGMENT)%>%summarise(number=sum(Edited_Reads))%>%ungroup()
@@ -45,7 +45,7 @@ theme(axis.text.x=element_text(colour="black",family="Times",size=14),axis.text.
 theme(legend.title = element_text(size = 20),legend.text = element_text(size = 15),axis.title.x = element_text(size=20),axis.title.y = element_text(size=20),axis.text.x = element_text(size = 14,color="black"),axis.text.y = element_text(size = 14,color="black"))
 ```
 
-<div align=center><img src="images/条形图.png" width="1000"></div>
+<div align=center><img src="images/条形图.png" ></div>
 
 ## 6.2 APA(Alternative Polyadenylation)Detection
 
