@@ -46,7 +46,7 @@ theme(legend.title = element_text(size = 20),legend.text = element_text(size = 1
 ```
 
 images/条形图.png
-<div align=center><img src="images/条形图.png" width=200"  ">(images/条形图.png)</div>
+<div align=center><img src="images/条形图.png" width="200"></div>
 
 
 ## 6.2 APA(Alternative Polyadenylation)Detection
