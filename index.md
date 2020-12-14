@@ -97,7 +97,7 @@ awk -F'\t' 'NR!=1{if($16=="Y") print $0}' DaPars_Test_data_All_Prediction_Result
 
 ![PASS_filter.png](images/PASS_filter.png)
 
-		两者筛选出来APA_diff一致
+两者筛选出来APA_diff一致
 
 3.  思考
 > * **我自己理解的是A,B两个样本之间通过PDUI的差值，来说明这个基因上的不同PolyA位点之间的距离差距。通过FDR、PDUI、Fold_change来判断这样距离的差距是否是明显的。假如A,B两个样本的PDUI值非常相近，则可能是同一个PolyA位点，而非diff-APA。**
@@ -106,7 +106,7 @@ awk -F'\t' 'NR!=1{if($16=="Y") print $0}' DaPars_Test_data_All_Prediction_Result
 
 ## 6.3 Ribo-seq
 ### 6.3.a) Backgroud
-	Ribo-seq是==细胞内蛋白翻译图谱的新型二代测序技术，用来描述全基因组水平蛋白质的翻译情况。主要是==选择性捕捉80S核糖体及其结合的RNA片段而定位核糖体所位于的RNA位置。
+   Ribo-seq是==细胞内蛋白翻译图谱的新型二代测序技术，用来描述全基因组水平蛋白质的翻译情况。主要是==选择性捕捉80S核糖体及其结合的RNA片段而定位核糖体所位于的RNA位置。
 >  * 在细胞裂解物中富集多聚核糖体(polysome)
 >  * 将多聚体核糖体用核酸酶(RNA nuclease)消化为单核糖体(monosome)
 >  * 选择性的收集和富集80S核糖体并经纯化得到80S核糖体所保护的RNA片段。
@@ -132,12 +132,12 @@ awk -F'\t' 'NR!=1{if($16=="Y") print $0}' DaPars_Test_data_All_Prediction_Result
 
 ## 6.4 Structure-seq
 ### 6.4.a) 实验原理
-	**RNA能够进行折叠，在部分区域能自身配对形成双链的RNA，通过SHAPE reagent能在构象上动态变化的核苷酸上反应(没有形成双链的部位)；在随后的反转录过程中，聚合酶将SHAPE adduct的读段，将与原始读段非互补的核苷酸参入cDNA；再对产生的cDNA进行大规模并行的测序，来创造一个突变特征谱；通过计算核苷酸-分辨率突变率，并进行校正背景以及正则化，产生一个标准的SHAPE反应曲线谱，通过SHAPE反应谱来对RNA二级结构进行建模，对竞争性结构和替代结构，量化调节局部核苷酸动态变化的任何过程或者功能**
+   **RNA能够进行折叠，在部分区域能自身配对形成双链的RNA，通过SHAPE reagent能在构象上动态变化的核苷酸上反应(没有形成双链的部位)；在随后的反转录过程中，聚合酶将SHAPE adduct的读段，将与原始读段非互补的核苷酸参入cDNA；再对产生的cDNA进行大规模并行的测序，来创造一个突变特征谱；通过计算核苷酸-分辨率突变率，并进行校正背景以及正则化，产生一个标准的SHAPE反应曲线谱，通过SHAPE反应谱来对RNA二级结构进行建模，对竞争性结构和替代结构，量化调节局部核苷酸动态变化的任何过程或者功能**
 
 ShapeMapper能够通过突变分析实验(MaP)自动的计算出RNA结构探测反应性
 
 ### 6.4b) homework
-	**SHAPE reactivity 反应的是核苷酸与SHAPE试剂的反应性。表示的是在单核苷酸分辨率下，一个核苷酸位点经SHAPE 试剂处理后，该位点核苷酸被修饰的概率，具体体现为在反转录后所得到的cDNA中，该位点发生突变的频率，取值为0-1。通常按照Nucleotide position作图。SHAPE reactivity 与核苷酸构象的稳定性有关，能够反映RNA 的结构与能量。拥有更灵活构象的无约束的核苷酸具有更大的可能性拥有SHAPE反映性构象，因此显示出更高的SHAPE反应性**
+   **SHAPE reactivity 反应的是核苷酸与SHAPE试剂的反应性。表示的是在单核苷酸分辨率下，一个核苷酸位点经SHAPE 试剂处理后，该位点核苷酸被修饰的概率，具体体现为在反转录后所得到的cDNA中，该位点发生突变的频率，取值为0-1。通常按照Nucleotide position作图。SHAPE reactivity 与核苷酸构象的稳定性有关，能够反映RNA 的结构与能量。拥有更灵活构象的无约束的核苷酸具有更大的可能性拥有SHAPE反映性构象，因此显示出更高的SHAPE反应性**
 
 ### 6.4 c) supplement
 **在实验过程中，发现docker中没有shapemapper软件，需要自行下载，下载方式如下**
@@ -160,9 +160,9 @@ export PATH=“/home/zhaoyizi/shapemapper-2.1.5:$PATH”
 
 **chimeric RNA are produced by two or more gene loci**
 
-	使用STAR将Fastq比对到参考基因组上，输出Chimeric.out.junction文件。
+   使用STAR将Fastq比对到参考基因组上，输出Chimeric.out.junction文件。
 
-	进行一下更正：原先在教程上提示挂载的ctat_genome_lib_build_X_docker.zip,ref_genome.fa.star.idx.zip可能存在一定问题，可以直接下载在清华云中的[ctat_genome_lib_build_X_docker.part1.rar](https://cloud.tsinghua.edu.cn/d/747db0edd36449289b6f/?p=%2FFiles%2FPART_III%2F6.RNA%20Regulation%20Analyses%2FChimeric%20RNA&mode=list)。然后解压到桌面。按照教程进行挂载即可。==若是MAC系统，遇到使用解压失败的问题，可以试试使用KeKa软件==
+   进行一下更正：原先在教程上提示挂载的ctat_genome_lib_build_X_docker.zip,ref_genome.fa.star.idx.zip可能存在一定问题，可以直接下载在清华云中的[ctat_genome_lib_build_X_docker.part1.rar](https://cloud.tsinghua.edu.cn/d/747db0edd36449289b6f/?p=%2FFiles%2FPART_III%2F6.RNA%20Regulation%20Analyses%2FChimeric%20RNA&mode=list)。然后解压到桌面。按照教程进行挂载即可。==若是MAC系统，遇到使用解压失败的问题，可以试试使用KeKa软件==
 ### 6.5.a）results
 
 ![融合基因.png](images/融合基因.png)
