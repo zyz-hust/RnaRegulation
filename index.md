@@ -30,7 +30,7 @@ editingSites_summary[is.na(editingSites_summary)]<-0
 # 将NA值转化为0
 ```
 
-![chr1.editorSites.png](https://github.com/zyz-hust/RnaRegulation/tree/gh-pages/images/chr1.editorSites.png)
+![chr1.editorSites.png](images/chr1.editorSites.png)
 
 ```R
 plot_editingSites<-chr1.editingSites%>%select(SEGMENT,Edited_Reads)%>%group_by(SEGMENT)%>%summarise(number=sum(Edited_Reads))%>%ungroup()
@@ -42,7 +42,7 @@ theme(axis.text.x=element_text(colour="black",family="Times",size=14),axis.text.
 theme(legend.title = element_text(size = 20),legend.text = element_text(size = 15),axis.title.x = element_text(size=20),axis.title.y = element_text(size=20),axis.text.x = element_text(size = 14,color="black"),axis.text.y = element_text(size = 14,color="black"))
 ```
 
-![条形图.png](https://github.com/zyz-hust/RnaRegulation/tree/gh-pages/images/条形图.png)
+![条形图.png](images/条形图.png)
 
 ## 6.2 APA(Alternative Polyadenylation)Detection
 1. 产生Generate region annotation 
@@ -60,7 +60,7 @@ theme(legend.title = element_text(size = 20),legend.text = element_text(size = 1
 ### 6.2.c)homework
 
 
-![DaPars_results.png](https://github.com/zyz-hust/RnaRegulation/tree/gh-pages/images/DaPars_results.png)
+![DaPars_results.png](images/DaPars_results.png)
 
 > Gene: 代表基因名称及其信息
 > predicted Proximal polyadenylation: 预测的近端的PolyA所在的位置
@@ -77,14 +77,14 @@ theme(legend.title = element_text(size = 20),legend.text = element_text(size = 1
 awk -F'\t' 'NR!=1{if($13>=0.5 && $15<=0.05 && $11/$12>0.59) print $0}' DaPars_Test_data_All_Prediction_Results.txt
 ```
 
-![filter_diff_APA.png](https://github.com/zyz-hust/RnaRegulation/tree/gh-pages/images/filter_diff_APA.png)
+![filter_diff_APA.png](images/filter_diff_APA.png)
 
 ```linux
 # 按照Pass_filter=="Y"筛选的diff-APA events
 awk -F'\t' 'NR!=1{if($16=="Y") print $0}' DaPars_Test_data_All_Prediction_Results.txt
 ```
 
-![PASS_filter.png](https://github.com/zyz-hust/RnaRegulation/tree/gh-pages/images/PASS_filter.png)
+![PASS_filter.png](images/PASS_filter.png)
 
 两者筛选出来APA_diff一致
 
@@ -112,11 +112,11 @@ Ribo-seq是==细胞内蛋白翻译图谱的新型二代测序技术==，用来�
 2. TE的分布情况并作图
 **TE的整体分布情况**
 
-![TE_distribution_all.png](https://github.com/zyz-hust/RnaRegulation/tree/gh-pages/images/TE_distribution_all.png)
+![TE_distribution_all.png](images/TE_distribution_all.png)
 
 **在TE富集的区域的TE详细分布情况**
 
-![TE_distribution_50.png](https://github.com/zyz-hust/RnaRegulation/tree/gh-pages/images/TE_distribution_50.png)
+![TE_distribution_50.png](images/TE_distribution_50.png)
 
 ## 6.4 Structure-seq
 ### 6.4.a) 实验原理
@@ -149,7 +149,7 @@ export PATH=“/home/zhaoyizi/shapemapper-2.1.5:$PATH”
 ==进行一下更正==：原先在教程上提示挂载的ctat_genome_lib_build_X_docker.zip,ref_genome.fa.star.idx.zip可能存在一定问题，可以直接下载在清华云中的[ctat_genome_lib_build_X_docker.part1.rar](https://cloud.tsinghua.edu.cn/d/747db0edd36449289b6f/?p=%2FFiles%2FPART_III%2F6.RNA%20Regulation%20Analyses%2FChimeric%20RNA&mode=list)。然后解压到桌面。按照教程进行挂载即可。==若是MAC系统，遇到使用解压失败的问题，可以试试使用KeKa软件==
 ### 6.5.a）results
 
-![融合基因.png](https://github.com/zyz-hust/RnaRegulation/tree/gh-pages/images/融合基因.png)
+![融合基因.png](images/融合基因.png)
 
 * 输出文件 展示了 融合基因名称、组成这个融合基因的两个基因名称以及处在染色体的具体位置、表达量等等信息。
 
@@ -170,7 +170,7 @@ export PATH=“/home/zhaoyizi/shapemapper-2.1.5:$PATH”
 
 ### 6.6.c) output
 
-![snv_output.png](https://github.com/zyz-hust/RnaRegulation/tree/gh-pages/images/snv_output.png)
+![snv_output.png](images/snv_output.png)
 
 1. 每一行即一个变异位点的基本信息及在注释的公共数据库中的注释信息
 2. 前五列为SNV变异位点的基本信息包括chr、start、end、ref、alt。
