@@ -12,6 +12,7 @@
 ![[chr1.editingSites.gvf.png]]
 	**例如第一行，代表着，这个Variation 位于染色体1上的GeneID=ENSG00000225159，Name=NPM1P39，SEGMEMT=noncoding-exon,这段基因位于染色体的27206930-27207796，该Variation位于27206932，参考基因组上其为A，而Alter为G，其质量分数为66.28，共有7条reads，其中有6条发生了edited**
 2. 根据chr1.editingSites.gvf文件，统计RNA编辑位点在基因组上的分布
+
 ```R
 chr1.editingSites<-read_tsv("chr1.editingSites.gvf")
 # 读取文件
@@ -26,7 +27,9 @@ editingSites_summary<-editingSites_summary%>%spread(SEGMENT,number)
 editingSites_summary[is.na(editingSites_summary)]<-0
 # 将NA值转化为0
 ```
+
 ![[chr1.editorSites.png]]
+
 ```R
 plot_editingSites<-chr1.editingSites%>%select(SEGMENT,Edited_Reads)%>%group_by(SEGMENT)%>%summarise(number=sum(Edited_Reads))%>%ungroup()
 
@@ -36,6 +39,7 @@ ggtitle("Summary of editorSites region")+
 theme(axis.text.x=element_text(colour="black",family="Times",size=14),axis.text.y=element_text(family="Times",size=14,face="plain"), axis.title.y=element_text(family="Times",size = 14,face="plain"), axis.title.x=element_text(family="Times",size = 14,face="plain"),plot.title = element_text(family="Times",size=25,face="bold",hjust = 0.5))+
 theme(legend.title = element_text(size = 20),legend.text = element_text(size = 15),axis.title.x = element_text(size=20),axis.title.y = element_text(size=20),axis.text.x = element_text(size = 14,color="black"),axis.text.y = element_text(size = 14,color="black"))
 ```
+
 ![[条形图.png]]
 
 ## 6.2 APA(Alternative Polyadenylation)Detection
@@ -67,15 +71,18 @@ theme(legend.title = element_text(size = 20),legend.text = element_text(size = 1
 # 按照adjusted.P_val<=0.05,PDUI_Group_diff>=0.5,PDUI_fold_change>=0.59 过滤数据
 awk -F'\t' 'NR!=1{if($13>=0.5 && $15<=0.05 && $11/$12>0.59) print $0}' DaPars_Test_data_All_Prediction_Results.txt
 ```
+
 ![[filter_diff_APA.png]]
 
 ```linux
 # 按照Pass_filter=="Y"筛选的diff-APA events
 awk -F'\t' 'NR!=1{if($16=="Y") print $0}' DaPars_Test_data_All_Prediction_Results.txt
 ```
+
 ![[PASS_filter.png]]
 
 两者筛选出来APA_diff一致
+
 3.  思考
 > **我自己理解的是A,B两个样本之间通过PDUI的差值，来说明这个基因上的不同PolyA位点之间的距离差距。通过FDR、PDUI、Fold_change来判断这样距离的差距是否是明显的。假如A,B两个样本的PDUI值非常相近，则可能是同一个PolyA位点，而非diff-APA。**
 > **因此我觉得，假如软件中对A,B没有control和test之间的区别的话，应该以PDUI_Group_diff的绝对值>=某个值作为筛选的标准，因为无论是A>B,B>A应该是以A,B之间的距离来判断两个PolyA之间的距离**
@@ -99,9 +106,11 @@ Ribo-seq是==细胞内蛋白翻译图谱的新型二代测序技术==，用来�
 
 2. TE的分布情况并作图
 **TE的整体分布情况**
+
 ![[TE_distribution_all.png]]
 
 **在TE富集的区域的TE详细分布情况**
+
 ![[TE_distribution_50.png]]
 
 ## 6.4 Structure-seq
@@ -134,7 +143,9 @@ export PATH=“/home/zhaoyizi/shapemapper-2.1.5:$PATH”
 
 ==进行一下更正==：原先在教程上提示挂载的ctat_genome_lib_build_X_docker.zip,ref_genome.fa.star.idx.zip可能存在一定问题，可以直接下载在清华云中的[ctat_genome_lib_build_X_docker.part1.rar](https://cloud.tsinghua.edu.cn/d/747db0edd36449289b6f/?p=%2FFiles%2FPART_III%2F6.RNA%20Regulation%20Analyses%2FChimeric%20RNA&mode=list)。然后解压到桌面。按照教程进行挂载即可。==若是MAC系统，遇到使用解压失败的问题，可以试试使用KeKa软件==
 ### 6.5.a）results
+
 ![[融合基因.png]]
+
 * 输出文件 展示了 融合基因名称、组成这个融合基因的两个基因名称以及处在染色体的具体位置、表达量等等信息。
 
 
@@ -153,6 +164,7 @@ export PATH=“/home/zhaoyizi/shapemapper-2.1.5:$PATH”
 6. Annotation：对得到的变异进行注释：变异位置；在人群中的频率、临床意义等等。可以使用ANNOVAR注释的公共数据库。程序现将文件从VCF格式转换为avinput格式，再对。avinput格式保存的变异进行注释。将注释之后的以.txt\.vcf两种形式保存。
 
 ### 6.6.c) output
+
 ![[snv_output.png]]
 
 1. 每一行即一个变异位点的基本信息及在注释的公共数据库中的注释信息
