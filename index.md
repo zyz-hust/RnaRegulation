@@ -1,13 +1,13 @@
 ## 6.1 RNAeditor
 1. 理解chr1.editingSites.vcf和chr1.editingSites.gvf的含义
 * chr1.editingSites.vcf :对所有的编辑位点的一个粗略的展示。
-> chrom 代表位于那条染色体上
-> POS 代表variant位于染色体的哪一个位点，如果是INDEL则代表其第一个碱基所在的位置。
-> REF 代表在参考基因组上在POS上的碱基是什么
-> ALT 代表alter的碱基
-> QUAL 是以phred格式的质量值，其值越高代表该位点存在variant的概率越大。
-> FILTER 代表过滤结果是否可靠，PASS代表PASS，若不可靠，则该项不为"PASS"或“.”
-> INFO 为variant 的详细信息
+> * chrom 代表位于那条染色体上
+> * POS 代表variant位于染色体的哪一个位点，如果是INDEL则代表其第一个碱基所在的位置。
+> * REF 代表在参考基因组上在POS上的碱基是什么
+> * ALT 代表alter的碱基
+> * QUAL 是以phred格式的质量值，其值越高代表该位点存在variant的概率越大。
+> * FILTER 代表过滤结果是否可靠，PASS代表PASS，若不可靠，则该项不为"PASS"或“.”
+> * INFO 为variant 的详细信息
 * chr1.editingSites.gvf ：Gene Variation File 对==每个==编辑位点的更信息的信息注释，包括geneID、name、segment等
 ![[chr1.editingSites.gvf.png]]
 	**例如第一行，代表着，这个Variation 位于染色体1上的GeneID=ENSG00000225159，Name=NPM1P39，SEGMEMT=noncoding-exon,这段基因位于染色体的27206930-27207796，该Variation位于27206932，参考基因组上其为A，而Alter为G，其质量分数为66.28，共有7条reads，其中有6条发生了edited**
