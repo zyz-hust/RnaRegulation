@@ -1,11 +1,11 @@
 ## 简介
 rMAT是一款对RNA-seq数据进行差异可变剪切分析的软件。通过rMATS统计模型对不同样本进行可变剪切事件的表达定量，然后以likelihood-ratio  test计算P value 来表示两组样品在IncLevel水平上的差异，IncLevel利用Benjamini Hochberg算法对p value 校正得FDR值。rMATS可识别的可变剪切有五种：
 
-- 1. SE ：skipped exon  外显子跳跃
-- 2. A5SS ：alternative 5’ splice site 第一个外显子可变剪切
-- 3. A3SS ：alternative 3’ splice site 最后一个外显子可变剪切
-- 4. MXE ：mutually exclusive exons 外显子选择性跳跃
-- 5. RI ：retained intron  内含子滞留
+* 1. SE ：skipped exon  外显子跳跃
+* 2. A5SS ：alternative 5’ splice site 第一个外显子可变剪切
+* 3. A3SS ：alternative 3’ splice site 最后一个外显子可变剪切
+* 4. MXE ：mutually exclusive exons 外显子选择性跳跃
+* 5. RI ：retained intron  内含子滞留
 
 ![Alternative Splicing Events.png](https://i.loli.net/2021/01/18/lhuzdS51YPeNtI3.png)
 
@@ -13,11 +13,11 @@ rMAT是一款对RNA-seq数据进行差异可变剪切分析的软件。通过rMA
 
 ```linux
 # 仅官网或者下述网站进行下载
-https://sourceforge.net/projects/rnaseq\-mats/files/MATS/rMATS.4.0.1.tgz/download
+https://sourceforge.net/projects/rnaseq-mats/files/MATS/rMATS.4.0.1.tgz/download
 
 pip install numpy
 sudo apt-get install libblas-dev liblas-dev liblapack-dev
-sudo apt\-get install gfortran
+sudo apt-get install gfortran
 ```
 
 或者使用conda 下载
@@ -38,16 +38,16 @@ print sys.maxunicode
 ## rMATS 参数设置
 ```linux
 # 完整命令
-/BioII/lulab\_b/chenyinghui/software/conda2/bin/python2 \
-/BioII/lulab\_b/chenyinghui/software/rMATS/rmats\_turbo\_v4\_1\_0\_python\_2\_7/rmats.py \
---b1 /BioII/lulab\_b/liuxiaofan/project/ribo-shape/result\_liulab\_batch4/splicing\_lxf/wt.noUVB.txt \
---b2 /BioII/lulab\_b/liuxiaofan/project/ribo-shape/result\_liulab\_batch4/splicing\_lxf/wt.UVB.txt \
---gtf /BioII/lulab\_b/liuxiaofan/database/ATH/GTF/Arabidopsis\_thaliana.TAIR10.34.gtf \
---od /BioII/lulab\_b/liuxiaofan/project/ribo-shape/result\_liulab\_batch4/splicing\_lxf/wt.UVB-vs-noUVB \
+/BioII/lulab_b/chenyinghui/software/conda2/bin/python2 \
+/BioII/lulab_b/chenyinghui/software/rMATS/rmats_turbo_v4_1_0_python_2_7/rmats.py \
+--b1 /BioII/lulab_b/liuxiaofan/project/ribo-shape/result_liulab_batch4/splicing_lxf/wt.noUVB.txt \
+--b2 /BioII/lulab_b/liuxiaofan/project/ribo-shape/result\_liulab\_batch4/splicing\_lxf/wt.UVB.txt \
+--gtf /BioII/lulab_b/liuxiaofan/database/ATH/GTF/Arabidopsis_thaliana.TAIR10.34.gtf \
+--od /BioII/lulab_b/liuxiaofan/project/ribo-shape/result_liulab_batch4/splicing_lxf/wt.UVB-vs-noUVB \
 -t paired \ 
 --readLength 151 \ 
 --cstat 0.0001  \
---tmp /BioII/lulab\_b/liuxiaofan/project/ribo-shape/result\_liulab\_batch4/splicing\_lxf/wt.UVB-vs-noUVB/tmp \
+--tmp /BioII/lulab\_b/liuxiaofan/project/ribo-shape/result_liulab_batch4/splicing_lxf/wt.UVB-vs-noUVB/tmp \
 --nthread 4  \
 --variable-read-length
 ```
